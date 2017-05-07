@@ -76,6 +76,6 @@ subnet 192.168.23.0 netmask 255.255.255.0 {
 * Finalmente, hacer que los programas se inicien automaticamente.
 ```bash
 sudo systemctl enable hostapd
-sudo update-rc.d isc-dhcp-server enable
+sudo systemctl isc-dhcp-server enable
 ```
 * Reiniciar Raspberry Pi
