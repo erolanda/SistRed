@@ -21,6 +21,21 @@ http_access allow mired
 * Para probar debemos configurar el navegador de un cliente para que se conecte usando nuestro proxy. En firefox podemos configurar el proxy en la sección de **Connection Settings**, ahí escribimos la dirección IP de nuestro servidor en el campo de HTTP Proxy.
 ![Image of Yaktocat](proxy1.png)
 
+### Bloquear sitios web
+* Para bloquear sitios vamos a crear un archivo que tenga las palabras a bloquear, `nano /etc/squid3/bloquear/prohibidas`.
+```bash
+msn
+taringa
+microsoft
+adobe
+```
+* En el archivo de configuración de squid, se agrega una ACL para bloquar las palabras escritas en el archivo.
+```bash
+#ACL para bloequar los sitios no permitidos
+acl prohibidos url_regex "/etc/squid3/bloquear/prohibidas"
+# Acceso prohibido a los sitios definidos en "prohibidas"
+http_access deny prohibidos
+```
 ### Proxy transparente
 * Ya se ha configurado el servidor proxy, sim embargo, es tedioso tener que configurar todas las computadoras de los clientes. La solución a este problema es configurar el proxy de forma transparente.
 * Abrimos el archivo de configuración y buscamos la linea ***http_port 3128*** y agregamos la palabra **transparent**
