@@ -14,6 +14,8 @@ forwarders {
     8.8.8.8;
  };
 ```
+* Modificar la línea `dnssec-validation auto;` a `dnssec-validation no;`
+
 * Abri el archivo **/etc/dhcp/dhcpd.conf** y en la linea que dice ***option domain-name-servers*** reemplazar la dirección IP por la dirección local del servidor (192.168.23.1).
 * Reiniciar los servicios de DHCP y DNS para que se hagan los cambios.
 ```bash
