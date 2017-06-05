@@ -1,3 +1,9 @@
+## Servidor DNS
+
+Un servidor de nombres de dominio tiene 2 objetivos fundamentales:
+* Traducir una dirección canónica en una dirección IP.
+* Traducir una dirección IP en una o varias direcciones canónicas (Traducción inversa).
+
 ## Configuración de servidor DNS
 
 * Instalar el paquete **bind9**
