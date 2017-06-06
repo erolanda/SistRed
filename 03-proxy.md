@@ -104,7 +104,7 @@ http_access deny prohibidos
 #Permitimos el accesso a esa ACL
 http_access allow mired
 ```
-![Bloqueo](proxy.png)
+![Bloqueo](imagenes/proxy.png)
 
 ### Proxy transparente
 
@@ -145,4 +145,4 @@ cp -r /usr/share/squid-langpack/es-mx/* /usr/local/squid/pages
 error_directory /usr/local/squid/pages/
 ```
 para que muestre el mensaje en español.
-![Bloqueo](proxy2.png)
+![Bloqueo](imagenes/proxy2.png)
