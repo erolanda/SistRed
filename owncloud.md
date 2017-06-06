@@ -52,6 +52,7 @@ Ahora ya tenemos instalado ownCloud, podemos entrar a la interfaz web mediante l
 https://eroland.me/owncloud
 ```
 Se mostrará la página de configuración para ownCloud
+
 ![own1](own1.png)
 
 En dicha página crear el usuario administrador y en la parte de abajo en la sección
