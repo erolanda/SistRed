@@ -1,0 +1,9 @@
+[Unit]
+Description=Inicio proxy squid
+[Service]
+Type=oneshot
+ExecStart=/usr/local/squid/sbin/squid
+ExecStop=/usr/local/squid/sbin/squid -k shutdown
+RemainAfterExit=yes
+[Install]
+WantedBy=multi-user.target
