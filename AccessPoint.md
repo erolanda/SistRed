@@ -1,3 +1,7 @@
+## Raspberry Pi
+
+Raspberry Pi es una nano computadora que puede ser utilizada en una gran variedad de proyectos. Las principales diferencias entre una Raspberry Pi con una computadora tradicional son el precio, el tamaño y la capacidad de la Raspberry Pi de integrarse a muchos proyectos electrónicos. En un principio surgió como una herramienta pedagógica para iniciar el aprendizaje en la informática. Actualmente puede ser utilizada en proyectos de robótica, estación meteorológica, servidor web, centro de entretenimientos, computadora personal, etc. A continuación veremos la configuración de una Raspberry Pi para ser usada como Acces Point.   
+
 ## Configuración de Raspberry Pi como un access point.
 
 Para poder usar la Raspberry Pi como access point se necesita instalar el paquete **hostapd**, también se instalará el paquete **isc-dhcp-server** para configurar un servidor DHCP para el acesss point.
@@ -49,13 +53,13 @@ sudo iptables -A FORWARD -i wlan0 -o eth0 -j ACCEPT
 sudo sh -c "iptables-save > /etc/iptables/rules.v4"
 ```
 
-## Configuración del servidor DHCP
+## Servidor DHCP
 
-Se desea que cuando un equipo nuevo se conecte a la red este adquiera la configuración IP automáticamente, para ello se instaló un servidor DHCP.
+La administración de dispositivos dentro de una red es una tarea que consume mucho tiempo. Cada dispositivo conectado en una red de área local necesita una dirección IP y una red cuenta con un número finito de direcciones IP. Si un dispositivo se desconecta de la red, la dirección IP debería quedar disponible para otro dispositivo. Políticas como la anterior son establecidas por el DHCP. A continuación se muestra la configuración de un servidor DHCP.
 
-### Servidor DHCP
+### Configuración del servidor DHCP
 
-EL protocolo de configuración dinámica de servidores (DHCP, Dynamic Host Configuration Protocol), es un protocolo de red en el que un servidor provee los parámetros de configuración a las computadoras que lo requieran (máscara de red, puerta de enlace, etc) y también incluye un mecanismo de asignación de direcciones IP.
+EL protocolo de configuración dinámica de hosts (DHCP, Dynamic Host Configuration Protocol), es un protocolo de red en el que un servidor provee los parámetros de configuración a los dispositivos que lo requieran (máscara de red, puerta de enlace, etc) y también incluye un mecanismo de asignación de direcciones IP.
 
 Un servidor DHCP proporciona opciones de configuración para un equipo cliente. A continuación se muestra una lista de opciones configurables mediante DHCP:
 

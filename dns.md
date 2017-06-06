@@ -1,6 +1,6 @@
 ## Servidor DNS
 
-Un servidor de nombres de dominio tiene 2 objetivos fundamentales:
+Un servidor de nombres de dominio (DNS) tiene 2 objetivos fundamentales:
 * Traducir una dirección canónica en una dirección IP.
 * Traducir una dirección IP en una o varias direcciones canónicas (Traducción inversa).
 

@@ -1,5 +1,18 @@
 # Proxy cache
+
+Un servidor proxy es un servidor que se encuentra entre el servidor remoto y el buscador de internet. Soporta protocolos como HTTP y puede almacenar y descargar documentos en su caché, de tal forma que el tiempo de conexión sea más rápido.
+
+Squid es un servidor proxy cache para clientes, soporta FTP, gopher y HTTP. Sus dos principales objetivos son:
+* Proporcionar servicio proxy de máquinas que deben pasar tráfico de internet.
+* Almacenamiento en caché.
+
+Cuando Squid recibe una solicitud de internet de un cliente, el servicio de filtrado la procesa. Si la solicitud cumple con alguna de las reglas establecidas entonces el sitio solicitado es bloqueado.
+
 ### Configuración de proxy
+* Instalar dependencias
+```bash
+sudo apt-get install libssl-dev
+```
 * Instalar squid3 desde código fuente para habilitar el soporte de SSL, usando los modificadores `--with-openssl` y `--enable-ssl-crtd`.
 ```bash
 # Descargar código fuente
@@ -8,23 +21,24 @@ wget http://www.squid-cache.org/Versions/v3/3.5/squid-3.5.25.tar.gz
 tar -zxvf squid-3.5.25.tar.gz
 cd squid-3.5.25
 ./configure --with-openssl --enable-ssl-crtd --with-default-user=squid --prefix=/usr/local/squid
-make
+make -j4
 sudo make install
 ```
 * Crear el usuario squid
 ```bash
-useradd squid
+sudo useradd squid
 ```
 * Crear el directorio de cache de certificados TLS (para proxy de https)
 ```bash
-/usr/local/squid/libexec/ssl_crtd -c -s /var/lib/ssl_db
-chown squid:squid -R /var/lib/ssl_db
+sudo /usr/local/squid/libexec/ssl_crtd -c -s /var/lib/ssl_db
+sudo chown squid:squid -R /var/lib/ssl_db
 ```
 * Crear un certificado raíz
 ```bash
-mkdir /usr/local/squid/ssl_cert
-chown squid:squid -R /usr/local/squid/ssl_cert
-chmod 700 /usr/local/squid/ssl_cert
+sudo mkdir /usr/local/squid/ssl_cert
+sudo chown squid:squid -R /usr/local/squid/ssl_cert
+sudo chmod 700 /usr/local/squid/ssl_cert
+sudo -s
 cd /usr/local/squid/ssl_cert
 ```
 * Crear el certificado usando OpenSSL (responder a las pareguntas que hace)
