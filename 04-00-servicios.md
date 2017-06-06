@@ -10,20 +10,20 @@ Digital Ocean es un proovedor de servidores virtuales privados (VPS) basados en 
 
 1. Iniciar sesión en Digital Ocean. Seleccionar la opción ```Create Droplet```
 
-![Bloqueo](1.JPG)
+![Bloqueo](imagenes/1.JPG)
 
 2. Seleccionar el SO del droplet y el paquete que más se adecúe a nuestras necesidades.
-![Bloqueo](2.JPG)
+![Bloqueo](imagenes/2.JPG)
 
 3. Seleccionar la ubicación del droplet y seleccionar el botón ```Siguente```
-![Bloqueo](3.JPG)
+![Bloqueo](imagenes/3.JPG)
 
 4. Esperar mientras termina la creación del droplet.
-![Bloqueo](4.JPG)
-![Bloqueo](5.JPG)
+![Bloqueo](imagenes/4.JPG)
+![Bloqueo](imagenes/5.JPG)
 
 5. Una vez creado el droplet se recibe una notificación con los datos del droplet que se acaba de crear.
-![Bloqueo](6.JPG)
+![Bloqueo](imagenes/6.JPG)
 
 ## Apache
 

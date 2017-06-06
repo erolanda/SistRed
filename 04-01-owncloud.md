@@ -53,11 +53,33 @@ https://eroland.me/owncloud
 ```
 Se mostrará la página de configuración para ownCloud
 
-![own1](own1.png)
+![own1](imagenes/own1.png)
 
 En dicha página crear el usuario administrador y en la parte de abajo en la sección
 *configurar la base de datos* escribir los datos de la base de datos que se creó
 durante la instalación de ownCloud.
 
 Finalmente se puede ingresar a ownCloud.
-![own1](own2.png)
+![own1](imagenes/own2.png)
+
+### Instalación de cliente para Linux
+
+Owncloud cuenta con clientes para mantener sincronizados los datos del servidor en las computadoras clientes. En este caso se instaló el cliente para Linux en una distribución ArchLinux.
+
+* Instalar el cliente
+```bash
+sudo pacman -S owncloud-client
+```
+
+* Ejecutar el cliente recien instalado.
+Escribir la dirección del servidor de ownCloud.
+![own1](imagenes/own3.png)
+
+* A continuación, ingresar los datos del usuario registrado en el servidor.
+![own1](imagenes/own4.png)
+
+* Elegir las carpetas que se sincronizarán antomáticamente.
+![own1](imagenes/own5.png)
+
+* Después de dar clic en el botón conectar, el cliente estará configurado y se sincronizará automáticamente con el servidor de ownCloud.
+![own1](imagenes/own6.png)

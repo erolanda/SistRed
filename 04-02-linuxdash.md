@@ -51,4 +51,4 @@ eroland@erodrop:~/linux-dash/app/server$ pm2 start index.js --name linuxdash -- 
 
 * Ahora se puede acceder a Linus Dash mediante la url eroland.me:3000
 
-![own1](dash.png)
+![own1](imagenes/dash.png)
