@@ -53,6 +53,7 @@ https://eroland.me/owncloud
 ```
 Se mostrará la página de configuración para ownCloud
 ![own1](own1.png)
+
 En dicha página crear el usuario administrador y en la parte de abajo en la sección
 *configurar la base de datos* escribir los datos de la base de datos que se creó
 durante la instalación de ownCloud.
