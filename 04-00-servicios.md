@@ -124,15 +124,32 @@ $ sudo systemctl restart apache2
 
 ## Creación de certificado
 
-Los certificados SSL son usados por servidores web para encriptar el tráfico entre el cliente y el servidor, de manera tal que la información viaje segura. Certbot es un paquete
+Para habilitar el protocolo HTTPS en el servidor web es necesario tener un certificado de una Autoridad de Certificación (CA). Let's encrypt  en un CA de la compañía Electronic Frontier Foundation (EFF) que proporciona certificación SSL d emanera gratuita.
 
-* Se agrega el repositorio
+Un certificado SSL en un conjunto de archivos que de manera digital unen una clave criptográfica con las organizaciones. Los certificados SSL son usados por servidores web para encriptar el tráfico entre el cliente y el servidor, de manera tal que la información viaje segura.
+
+Certbot es un paquete que automatiza tareas de obtener certificados y configurar servidores web para usarlos.
+
+### Instalación de Certbot
+
+* Agregar el repositorio certbot.
 ```
 $ sudo add-apt-repository ppa:certbot/sertbot
 ```
 
-* ACtualizar la lista de paquetes e instalar Certbot
+* Actualizar la lista de paquetes e instalar Certbot
 ```
 $ sudo apt-get update
 $ sudo apt-get install python-certbot-apache
+```
+* Para generar el certificado SSL se ejecuta el comando:
+```
+$ sudo certbot --apache -d eroland.me -d www.eroland.me
+```
+Una vez que la instalación terminó se puede verificar la generación de los mismos en ```/etc/letsencrypt/live```. Se observará algo parecido como lo que se muestra a continuación:
+```
+root@erodrop:/etc/letsencrypt/live# ls
+clandestina-hds.com  eroland.me
+root@erodrop:/etc/letsencrypt/live# ls eroland.me/
+cert.pem  chain.pem  fullchain.pem  privkey.pem  README
 ```
