@@ -43,11 +43,6 @@ $ sudo apt-get upgrade
 $ sudo apt-get install apache2
 ```
 
-* Agregar al archivo ``` /etc/apache2/apache2.conf ``` la línea
-```
-ServerName dominio_del_servidor_o_IP
-```
-
 * Se comprueba la configuración de apache para los errores de sintaxis
 ```
 $ sudo apache2ctl configtest
@@ -60,7 +55,7 @@ $ sudo systemctl restart apache2
 
 ## Configuración de host virtual
 
-* Una vez que se tiene instalado Apache se crea la estructura del directorio:
+* Una vez que se tiene instalado Apache se crea la estructura del directorio. En este caso se crean dos servidores virtuales debido a que habrá dos dominios distintos:
 ```
 $ sudo mkdir -p /var/www/eroland.me/public_html
 $ sudo mkdir -p /var/www/clandestina-hds.com/public_html
@@ -68,8 +63,8 @@ $ sudo mkdir -p /var/www/clandestina-hds.com/public_html
 
 * Cambiar permisos a los directorios anteriores
 ```
-$ sudo chown -R $USER:$USER /var/www/eroland.me/public_html
-$sudo chown -R $USER:$USER /var/www/clandestina-hds.com/public_html
+$ sudo chown -R eroland:eroland /var/www/eroland.me/public_html
+$ sudo chown -R clandestina:clandestina /var/www/clandestina-hds.com/public_html
 ```
 
 * Habilitar el acceso de lectura
@@ -84,7 +79,7 @@ $sudo chmod -R 755 /var/www
 ```
 El archivo ``` ìndex.html ``` será usado como base para cada uno de los sitios.
 
-* Crear un archivo de configuración ``` 000-default.con ``` para indicar a Apache como gestionar las solicitudes.
+* Crear un archivo de configuración  ``` 000-default.conf ``` para indicar a Apache como gestionar las solicitudes.
 
 ```
 $ sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/eroland.me.conf
@@ -113,4 +108,31 @@ $ sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-avail
 
 El archivo de configuración anterior será la base para cada sitio, sólo modificando las directivas anteriormente mencionadas.
 
-* Habilitar los archivos del virtual host.
+* Habilitar los archivos del virtual host,para lo cual se usa la herramienta  ```a2ensite``` aplicada a cada uno de los sitios.
+```
+$ sudo a2ensite eroland.me.conf
+```
+
+A continuación se deshabilita el sitio definido en ```000-default.conf```
+```
+$ sudo a2dissite 000-default.conf
+```
+Se reinicia el servicio de Apache
+```
+$ sudo systemctl restart apache2
+```
+
+## Creación de certificado
+
+Los certificados SSL son usados por servidores web para encriptar el tráfico entre el cliente y el servidor, de manera tal que la información viaje segura. Certbot es un paquete
+
+* Se agrega el repositorio
+```
+$ sudo add-apt-repository ppa:certbot/sertbot
+```
+
+* ACtualizar la lista de paquetes e instalar Certbot
+```
+$ sudo apt-get update
+$ sudo apt-get install python-certbot-apache
+```
