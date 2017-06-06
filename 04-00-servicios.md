@@ -1,4 +1,4 @@
-# Titulo
+# Servicios Web
 
 Un servicio web permite a un proovedor compartir una funcionalidad a través de la red. Un servicio web tiene dos propiedades:
 * Es autodescriptivo
@@ -153,3 +153,43 @@ clandestina-hds.com  eroland.me
 root@erodrop:/etc/letsencrypt/live# ls eroland.me/
 cert.pem  chain.pem  fullchain.pem  privkey.pem  README
 ```
+
+```cron``` es un demonio que permite la ejecución periódica de ciertas tareas. El archivo ```crontab``` contiene la hora y la peridiocidad de ejecución de los procesos.
+
+Volviendo al tema de certificado SSL y Certbot, por razones de seguridad el certificado dura sólo 90 días, por lo tanto cada 90 días será necesario realizar los comandos anteriores.
+
+Para renovar el certificado se ejecuta el comando:
+```
+/usr/bin/certbot renew
+```
+Si éste comando es ejecutado y aún no han pasado los 90 días aparecerá un mensaje como el siguiente:
+```
+/usr/bin/certbot renew
+The following error was encountered:
+[Errno 13] Permission denied: '/var/log/letsencrypt/.certbot.lock'
+If running as non-root, set --config-dir, --work-dir, and --logs-dir to writeable paths.
+clandestina@erodrop:/$ sudo /usr/bin/certbot renew
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+
+-------------------------------------------------------------------------------
+Processing /etc/letsencrypt/renewal/eroland.me.conf
+-------------------------------------------------------------------------------
+Cert not yet due for renewal
+
+-------------------------------------------------------------------------------
+Processing /etc/letsencrypt/renewal/clandestina-hds.com.conf
+-------------------------------------------------------------------------------
+Cert not yet due for renewal
+
+The following certs are not due for renewal yet:
+  /etc/letsencrypt/live/eroland.me/fullchain.pem (skipped)
+  /etc/letsencrypt/live/clandestina-hds.com/fullchain.pem (skipped)
+No renewals were attempted.
+```
+
+Por lo tanto, se deja a ```cron``` la tarea de diariamente realizar la verificación de la validez del certificado. Para programar la tarea se ejecuta el comando ```$ sudo crontab -e``` y se escribe la tarea.
+```
+#m h  dom mon dow   command
+15 3 * * * /usr/bin/certbot renew --quiet
+```
+El comando anterior intentará verificar todos los días a las 3 hrs. con 15 minutos con el comando ```/usr/bin/certbot renew --quiet```
