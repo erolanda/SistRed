@@ -10,16 +10,31 @@ La hermosa ciudad de Xalapa sólo es capaz de soportar 3 ataques, ésta noche ¿
 
 En el siguiente enlace puede jugarse la versión web del juego, por razones desconocidas los misiles amigos no funcionan en ésta versión
 ```
-
+https://clandestina-hds.com/proyFinalWeb/
 ```
 En el siguiente enlace se puede descargar una versión de escritorio para MacOS
 ```
-
+https://clandestina-hds.com/mac.zip
 ```
 
 En el siguiente enlace se puede descargar una versión de escritorio para Windows
 ```
-
+https://clandestina-hds.com/proyEjecutable/
 ```
 
 ## Agregando servicio a servidor web
+* El juego anterior fue desarrollado en Unity y para montarlo en el servidor web el proyecto del juego ejecuta el comando:
+```
+$ scp proyFinalWeb.zip clandestina@clandestina-hds.com:~
+```
+
+* Se ingresa al servidor por medio de ssh
+```
+$ ssh clandestina@clandestina-hds.com
+```
+* Se copia el archivo del juego en el servidor apache y se descomprime.
+
+```
+$ cp proyFinalWeb.zip /var/www/clandestina-hds.com/public_html
+$ unzip /var/www/clandestina-hds.com/public_html/proyFinalWeb.zip
+```
